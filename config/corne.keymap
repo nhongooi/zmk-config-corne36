@@ -1,51 +1,50 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
 
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
-&lt { quick_tap_ms = <200>; };
-&mt { tapping-term-ms = <140>; };
-
+&mt { tapping-term-ms = <150>; };
 
 / {
-        keymap {
-                compatible = "zmk,keymap";
 
-       default_layer {
-		bindings = <
-		&none &kp Q       &kp W &kp E 		&kp R &kp T 					  	&kp Y 	 &kp U    &kp I     &kp O   &kp P 	 &none
-		&none &mt LCTRL A	&kp S &kp D 		&kp F &kp G 					  	&kp H 	 &kp J    &kp K     &kp L   &kp SEMI &none
-		&none &mt LSFT Z  &kp X &kp C 		&kp V &kp B				        &kp N 	 &kp M    &kp COMMA &kp DOT &kp FSLH &none
-                						&kp LGUI  &lt 1 &kp SPC  						&kp RET  &kp BSPC &lt 2
-		>;]
+	keymap {
+		compatible = "zmk,keymap";
+
+    default_layer {
+			bindings = <
+		&none &kp Q       &kp W &kp E 	    	&kp R &kp T 					  	&kp Y 	 &kp U    &kp I     &kp O   &kp P 	 &none
+		&none &mt LCTRL A	&kp S &kp D 	    	&kp F &kp G 					  	&kp H 	 &kp J    &kp K     &kp L   &kp SEMI &none
+		&none &mt LSFT Z  &kp X &kp C 	    	&kp V &kp B				        &kp N 	 &kp M    &kp COMMA &kp DOT &kp FSLH &none
+                						&mt LGUI TAB  &mo 1 &kp SPC  						&kp RET  &kp BSPC &mo 2
+			>;
 		};
 
-       upper_layer {
-		bindings = <
+    upper_layer {
+			bindings = <
 		&none &kp 1       &kp 2 			&kp 3      &kp 4			   &kp 5 					  		&kp 6 	 	 &kp 7    	 &kp 8      &kp 9   &kp 0 	 &none
-		&none &kp LG(J)   &kp LG(K)   &kp LG(L)  &kp LG(SEMI)  &kp ESC 					  	&kp QUOT 	 &kp MINUS   &kp EQUAL  &trans  &trans   &none
-		&none &trans      &kp LG(J)   &kp LG(K)  &kp LG(L)     &kp LG(SEMI)				  &kp GRAVE  &kp PLUS    &kp COMMA 	&trans  &trans   &none
-                									&trans     &trans				 &trans  						  &trans   	 &trans 	   &lt 3
-					>;
+		&none &kp LG(J)   &kp LG(K)   &kp LG(L)  &kp LG(SEMI)  &kp ESC 					  	&kp SQT 	 &kp MINUS   &kp EQUAL  &trans  &trans   &none
+		&none &trans      &kp LG(1)   &kp LG(2)  &kp LG(3)     &kp LG(4)				    &kp GRAVE  &kp PLUS    &kp COMMA 	&trans  &trans   &none
+                									&trans     &trans				 &trans  						  &trans   	 &trans 	   &mo 3
+			>;
 		};
 
-			 lower_layer {
-		bindings = <
+		lower_layer {
+			bindings = <
 		&none &trans   &kp F1		&kp F2   &kp F3 	&kp F4				  	    &kp PG_UP   &kp HOME 	&trans   &trans 		&trans  	&none
 		&none &trans   &kp F5		&kp F6   &kp F7 	&kp	F8  		  			  &kp LEFT    &kp DOWN 	&kp UP   &kp RIGHT 	&kp BSLH  &none
 		&none &trans   &kp F9		&kp F10  &kp F11 	&kp F12 				  	  &kp PG_DN   &kp END 	&kp DEL  &kp LBKT 	&kp RBKT  &none
                 						&trans   &trans	  &trans  						  &trans      &trans    &trans
-					>;
+			>;
 		};
 
-				adjust_layer {
-		bindings = <
+		adjust_layer {
+			bindings = <
 		&none	&bt BT_CLR 	&bt BT_SEL 0     &bt BT_SEL 1  	   &bt BT_SEL 2   	  &bt BT_SEL 3				  &none &none   &none		&none &none   &none
 		&none &none   		&none				     &none 						 &none  					  &none					  	    &none &none   &none		&none &none   &none
 		&none &none   		&ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG 	&none					  	    &none &none   &none		&none &none   &none
-                											 &none 						 &none			  			&none												&none &none   &none
-
-					>;
+																			&none 						 &none			  			&none												&none &none   &none
+			>;
 		};
 	};
 };
